@@ -1,7 +1,7 @@
 #!/bin/bash
 newuser=rise
 adduser --disabled-password --gecos "Admin" $newuser
-echo $newuser:testnet123 | chpassw
+echo $newuser:testnet123 | chpasswd
 echo "$newuser    ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 systemctl reload sshd
 echo 'LC_ALL="en_US.UTF-8"' >> /etc/environment
