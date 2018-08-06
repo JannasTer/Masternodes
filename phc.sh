@@ -160,7 +160,8 @@ for i in `seq 1 1 $MNCOUNT`; do
   mv ${NAME}.conf_TEMP $CONF_DIR/phc.conf
 
   sh ~/bin/${NAME}d_$ALIAS.sh
-	
+
+  if [ -z "$PRIVKEY" ]; then  
 	for (( ; ; ))
 	do
 		#STOP
@@ -179,6 +180,7 @@ for i in `seq 1 1 $MNCOUNT`; do
 		  break
 	    fi
 	done
+  fi
   
   MNCONFIG=$(echo $ALIAS $IP:$PORT $PRIVKEY)
   echo $MNCONFIG >> ~/bin/masternode_config.txt
