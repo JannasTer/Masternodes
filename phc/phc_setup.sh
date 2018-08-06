@@ -47,11 +47,9 @@ if [[ ${DOSETUP,,} =~ "y" ]] ; then
   ## COMPILE AND INSTALL
   mkdir -p ~/phc_tmp
   cd ~/phc_tmp
-  wget https://github.com/profithunterscoin/phc/archive/1.0.0.6-Ubuntu-Intel.tar.gz
-  tar -xvzf 1.0.0.6-Ubuntu-Intel.tar.gz
-  cd ./1.0.0.6-Ubuntu-Intel/bin
+  wget https://github.com/profithunterscoin/phc/releases/download/1.0.0.6-Ubuntu-Intel/phcd
   sudo chmod 755 *
-  sudo mv ./phc* /usr/bin
+  sudo mv phcd /usr/bin
   #read
   cd ~
   rm -rfd ~/phc_tmp
@@ -123,8 +121,8 @@ for i in `seq 1 1 $MNCOUNT`; do
 
   PRIVKEY=""
   echo ""
-  # echo "Enter masternode private key for node $ALIAS"
-  # read PRIVKEY
+  echo "Enter masternode private key for node $ALIAS"
+  read PRIVKEY
 
   ALIAS=${ALIAS,,}
   CONF_DIR=~/.${NAME}_$ALIAS
