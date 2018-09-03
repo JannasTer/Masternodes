@@ -146,7 +146,7 @@ function configure_firewall() {
 function create_config() {
 
 rm -f ${conf_dir}/${name}.conf &>> ${logfile}
-echo -e "$name MasterNode will be configured for MAINNET"
+echo -e "$name MasterNode will be configured"
 cat << EOF >> ${conf_dir}/${name}.conf
 rpcuser=$rpcuser
 rpcpassword=$rpcpassword
@@ -430,14 +430,9 @@ pause(){
 		sudo -u bata -- bash -c "/usr/local/bin/bata-cli -conf=/home/bata/.bata/bata.conf -datadir=/var/lib/bata mnsync status"
        pause
 	}
-#	seven(){
-#	echo  "Check Masternode Debug"
-#		sudo -u bata -- bash -c "/usr/local/bin/bata-cli -conf=/home/bata/.bata/bata.conf -datadir=/var/lib/bata masternode debug"
-#      pause
-#	}
 	show_menus() {
 	clear
-	jp2a -b --colors --width=55 /usr/local/bin/bata.jpg
+	jp2a -b --colors --width=55 /usr/local/bin/cropped-bata.jpg
 	echo "~~~~~~~~~~~~~~~~~~~~~"
 	echo "  M A I N - M E N U"
 	echo "~~~~~~~~~~~~~~~~~~~~~"
@@ -536,7 +531,7 @@ debug=0;
 startnode=0;
 
 # Execute getopt
-ARGS=$(getopt -o "hr:csudnt" -l "help,release,clear,sentinel,update,debug,startnode,testnet" -n "masternode.sh" -- "$@");
+ARGS=$(getopt -o "hr:csudnt" -l "help,release,clear,update,debug,startnode" -n "masternode.sh" -- "$@");
 
 #Bad arguments
 if [ $? -ne 0 ];
